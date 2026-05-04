@@ -1,8 +1,8 @@
 # Godot 4+ specific ignores
-.godot/
+.godot/*
 /android/
 
 # Custom ignores
 export_presets.cfg
 /dist/
-
+!.godot/extension_list.cfg
