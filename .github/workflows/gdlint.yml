@@ -1,0 +1,39 @@
+name: Static Checks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  static-checks:
+    name: Static Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Install gdtoolkit (includes gdformat, gdlint, gdradon)
+      - name: Install gdtoolkit
+        uses: Scony/godot-gdscript-toolkit@master
+
+      # Fail if any file is not properly formatted
+      # To fix locally: gdformat .
+      - name: Check formatting
+        run: gdformat --check .
+
+      # Fail if any file violates linting rules
+      # Note: gdlint runs gdparse internally. No need to run gdparse separately
+      # To fix locally: gdlint .
+      - name: Lint
+        run: gdlint .
+
+      # Report cyclomatic complexity. Informational only, never blocks merge
+      # Review output in CI logs to spot overly complex functions
+      - name: Cyclomatic complexity report
+        run: gdradon cc .
