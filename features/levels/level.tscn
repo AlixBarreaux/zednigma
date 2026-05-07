@@ -1,19 +1,24 @@
 [gd_scene format=3 uid="uid://ce3aacgbpfney"]
 
 [ext_resource type="PackedScene" uid="uid://bjceh4cefgoae" path="res://features/player/player.tscn" id="1_ctm8j"]
+[ext_resource type="Script" uid="uid://bdhsjpt8ga4qy" path="res://features/levels/level.gd" id="1_fysxg"]
 [ext_resource type="PackedScene" uid="uid://bdvosli755f2i" path="res://features/enemies/zombie.tscn" id="2_fysxg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u52ul"]
-vertices = PackedVector2Array(269.92188, 136.82031, 54.382813, 133.17188, 58.617188, 22.828125, 269.0703, 19.171875)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(49, 13, 279, 9, 280, 147, 44, 143)])
+vertices = PackedVector2Array(431.03125, 146.09375, 489.0703, 146.85938, 490.92188, 388.7422, 427.35156, 387.1875, 407.21094, 278.4375, 402.09375, 227.9375, 268, 287.64063, 264.3203, 229.07813, 268, 389.42188, 172.82813, 393.5625, 169.15625, 167, 262.3203, 167)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(6, 8, 9, 10, 7), PackedInt32Array(7, 10, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(156, 139, 270, 137, 274, 219, 417, 221, 412, 134, 527, 135, 533, 398, 419, 397, 417, 286, 271, 289, 278, 399, 163, 404)])
 
 [node name="Level" type="Node2D" unique_id=517299417]
+script = ExtResource("1_fysxg")
 
 [node name="Player" parent="." unique_id=1108645041 instance=ExtResource("1_ctm8j")]
+unique_name_in_owner = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1488461919]
+position = Vector2(-94, -105)
 navigation_polygon = SubResource("NavigationPolygon_u52ul")
 
 [node name="Zombie" parent="." unique_id=326393747 instance=ExtResource("2_fysxg")]
-position = Vector2(128, 59)
+unique_name_in_owner = true
+position = Vector2(252, 147)
