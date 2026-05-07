@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dif7ramsyku3v" path="res://features/enemies/zombie.gd" id="1_q00gp"]
 [ext_resource type="Resource" uid="uid://ct760bxfg1pst" path="res://data/enemies/zombie_basic.tres" id="2_4gyoi"]
+[ext_resource type="Script" uid="uid://bqc4wh7ihoyov" path="res://systems/health/health_component.gd" id="3_stcnb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oiube"]
 
@@ -15,3 +16,8 @@ data = ExtResource("2_4gyoi")
 shape = SubResource("CircleShape2D_oiube")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1047691012]
+unique_name_in_owner = true
+
+[node name="HealthComponent" type="Node" parent="." unique_id=34698160]
+unique_name_in_owner = true
+script = ExtResource("3_stcnb")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ce3aacgbpfney"]
 
-[ext_resource type="PackedScene" uid="uid://bjceh4cefgoae" path="res://features/player/player.tscn" id="1_u52ul"]
-[ext_resource type="PackedScene" path="res://zombie_spitter.tscn" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://bjceh4cefgoae" path="res://features/player/player.tscn" id="1_ctm8j"]
+[ext_resource type="PackedScene" uid="uid://bdvosli755f2i" path="res://features/enemies/zombie.tscn" id="2_fysxg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u52ul"]
 vertices = PackedVector2Array(269.92188, 136.82031, 54.382813, 133.17188, 58.617188, 22.828125, 269.0703, 19.171875)
@@ -10,10 +10,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(49, 13, 279, 9, 280, 14
 
 [node name="Level" type="Node2D" unique_id=517299417]
 
-[node name="Player" parent="." unique_id=1108645041 instance=ExtResource("1_u52ul")]
-
-[node name="ZombieSpitter" parent="." unique_id=447437563 instance=ExtResource("2_vonw3")]
-position = Vector2(104, 52)
+[node name="Player" parent="." unique_id=1108645041 instance=ExtResource("1_ctm8j")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1488461919]
 navigation_polygon = SubResource("NavigationPolygon_u52ul")
+
+[node name="Zombie" parent="." unique_id=326393747 instance=ExtResource("2_fysxg")]
+position = Vector2(128, 59)
