@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bdvosli755f2i"]
+
+[ext_resource type="Script" uid="uid://dif7ramsyku3v" path="res://features/enemies/zombie.gd" id="1_q00gp"]
+[ext_resource type="Resource" uid="uid://ct760bxfg1pst" path="res://data/enemies/zombie_basic.tres" id="2_4gyoi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oiube"]
+
+[node name="Zombie" type="CharacterBody2D" unique_id=326393747]
+script = ExtResource("1_q00gp")
+data = ExtResource("2_4gyoi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1735265252]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479342529]
+shape = SubResource("CircleShape2D_oiube")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1047691012]

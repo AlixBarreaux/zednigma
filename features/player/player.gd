@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 var speed: float = 200.0
 
+@onready var health_comp: HealthComponent = %HealthComponent
+
 
 func _physics_process(_delta: float) -> void:
 	if not is_multiplayer_authority():
