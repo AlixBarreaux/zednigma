@@ -9,6 +9,7 @@ var _player: Player = null
 var _player_health_comp: HealthComponent = null
 
 @onready var _nav_agent: NavigationAgent2D = %NavigationAgent2D
+@onready var _health_comp: HealthComponent = %HealthComponent
 
 
 func _ready() -> void:
@@ -20,6 +21,8 @@ func _ready() -> void:
 	assert(data.attack_damage > 0, "attack_damage must be > 0 !")
 	assert(data.attack_cooldown > 0.0, "attack_cooldown must be > 0.0 !")
 
+	_health_comp.initialize(data.max_health)
+	_health_comp.died.connect(_on_died)
 	_ai = data.create_ai()
 
 
@@ -36,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	_ai.tick(delta, global_position, _player.global_position, can_see_player)
 
 	if _ai.wants_attack:
-		_player_health_comp.take_damage(data.attack_damage)
+		_player_health_comp.decrease_health(data.attack_damage)
 
 	_nav_agent.target_position = _player.global_position
 	var next_pos: Vector2 = _nav_agent.get_next_path_position()
