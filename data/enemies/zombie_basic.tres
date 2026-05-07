@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ZombieData" format=3 uid="uid://ct760bxfg1pst"]
 
-[ext_resource type="Script" uid="uid://o2noj41egasn" path="res://features/enemies/data/zombie_data.gd" id="1_s606v"]
+[ext_resource type="Script" uid="uid://o2noj41egasn" path="res://features/enemies/zombie_data.gd" id="1_s606v"]
 
 [resource]
 script = ExtResource("1_s606v")
