@@ -2,11 +2,12 @@ class_name Zombie
 extends CharacterBody2D
 
 @export var data: ZombieData = null
+@export var path_update_interval: float = 0.25
 
 var _ai: ZombieAIBase = null
 var _player: Player = null
-
-var _player_health_comp: HealthComponent = null
+## Randomized so zombies don't all recalculate paths on the same frame.
+var _path_timer: float = randf_range(0.0, 0.25)
 
 @onready var _nav_agent: NavigationAgent2D = %NavigationAgent2D
 @onready var _health_comp: HealthComponent = %HealthComponent
@@ -63,10 +64,13 @@ func _physics_process(delta: float) -> void:
 	if _ai.wants_attack:
 		_on_attack_succeeded(_player)
 
-	if _ai._state != _ai.State.IDLE:
-		_nav_agent.target_position = _player.global_position
-	else:
-		_nav_agent.target_position = global_position
+	_path_timer -= delta
+	if _path_timer <= 0.0:
+		_path_timer = path_update_interval
+		if _ai.state != _ai.State.IDLE:
+			_nav_agent.target_position = _player.global_position
+		else:
+			_nav_agent.target_position = global_position
 
 	var next_pos: Vector2 = _nav_agent.get_next_path_position()
 

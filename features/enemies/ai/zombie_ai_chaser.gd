@@ -3,8 +3,8 @@ extends ZombieAIBase
 
 enum State { IDLE, CHASE, ATTACK }
 
+var state: State = State.IDLE
 var _data: ZombieData = null
-var _state: State = State.IDLE
 var _attack_timer: float = 0.0
 
 
@@ -19,24 +19,24 @@ func tick(delta: float, self_pos: Vector2, player_pos: Vector2, can_see_player: 
 
 	var distance: float = self_pos.distance_to(player_pos)
 
-	match _state:
+	match state:
 		State.IDLE:
 			desired_direction = Vector2.ZERO
 			if can_see_player and distance <= _data.detection_range:
-				_state = State.CHASE
+				state = State.CHASE
 
 		State.CHASE:
 			if distance <= _data.attack_range:
-				_state = State.ATTACK
+				state = State.ATTACK
 			elif distance > _data.detection_range:
-				_state = State.IDLE
+				state = State.IDLE
 			else:
 				desired_direction = (player_pos - self_pos).normalized()
 
 		State.ATTACK:
 			desired_direction = Vector2.ZERO
 			if distance > _data.attack_range:
-				_state = State.CHASE
+				state = State.CHASE
 			elif _attack_timer <= 0.0:
 				wants_attack = true
 				_attack_timer = _data.attack_cooldown
