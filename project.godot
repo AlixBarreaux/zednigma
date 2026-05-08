@@ -21,6 +21,7 @@ buses/default_bus_layout="uid://b3twj348ffsil"
 [autoload]
 
 GameState="*uid://dkqjoch36vso8"
+Events="*uid://2sxxv2a2a4qs"
 
 [display]
 
