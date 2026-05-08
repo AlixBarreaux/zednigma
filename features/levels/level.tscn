@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ce3aacgbpfney"]
+
+[ext_resource type="PackedScene" uid="uid://bjceh4cefgoae" path="res://features/player/player.tscn" id="1_ctm8j"]
+[ext_resource type="Script" uid="uid://bdhsjpt8ga4qy" path="res://features/levels/level.gd" id="1_fysxg"]
+[ext_resource type="PackedScene" uid="uid://bdvosli755f2i" path="res://features/enemies/zombie.tscn" id="2_fysxg"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_u52ul"]
+vertices = PackedVector2Array(427.22656, 181.6875, 425.22656, 87.89844, 511.14844, 95.1875, 514.8125, 305.79688, 429.77344, 304.1797, 427.78906, 217.78125, 227.74219, 201.10938, 224.67188, 168.40625, 110.65625, 279.60156, 103.390625, 80.63281, 218.67188, 87.46094, 229.74219, 287.3125)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(0, 5, 6, 7), PackedInt32Array(8, 9, 10, 7, 11), PackedInt32Array(11, 7, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(93, 70, 228, 78, 234, 159, 417, 171, 415, 77, 521, 86, 525, 316, 420, 314, 418, 227, 238, 212, 240, 298, 101, 289)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fysxg"]
+size = Vector2(42, 114)
+
+[node name="Level" type="Node2D" unique_id=517299417]
+script = ExtResource("1_fysxg")
+
+[node name="Player" parent="." unique_id=1108645041 instance=ExtResource("1_ctm8j")]
+unique_name_in_owner = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1488461919]
+navigation_polygon = SubResource("NavigationPolygon_u52ul")
+
+[node name="Zombie" parent="." unique_id=326393747 instance=ExtResource("2_fysxg")]
+unique_name_in_owner = true
+position = Vector2(329, 192)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=909899300]
+position = Vector2(170, 188)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=441135248]
+shape = SubResource("RectangleShape2D_fysxg")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="StaticBody2D" unique_id=547448815]
+radius = 57.85
+vertices = PackedVector2Array(-27, 61, -24, -62, 23, -76, 28, -1, 29, 79)
+affect_navigation_mesh = true
