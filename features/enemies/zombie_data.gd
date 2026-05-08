@@ -1,7 +1,7 @@
 class_name ZombieData
 extends Resource
 
-@export var max_health: int = 1
+@export var max_health: int = 100
 @export var move_speed: float = 60.0
 @export var detection_range: float = 250.0
 @export var attack_range: float = 20.0

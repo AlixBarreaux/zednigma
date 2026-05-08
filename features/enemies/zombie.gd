@@ -28,28 +28,10 @@ func _ready() -> void:
 
 func set_player_target(player: Player) -> void:
 	_player = player
-	_player_health_comp = _player.health_comp
 
 
-func _physics_process(delta: float) -> void:
-	if not _player:
-		return
-
-	var can_see_player: bool = _can_see_player()
-	_ai.tick(delta, global_position, _player.global_position, can_see_player)
-
-	if _ai.wants_attack:
-		_player_health_comp.decrease_health(data.attack_damage)
-
-	_nav_agent.target_position = _player.global_position
-	var next_pos: Vector2 = _nav_agent.get_next_path_position()
-
-	if _ai.desired_direction != Vector2.ZERO:
-		velocity = (next_pos - global_position).normalized() * data.move_speed
-	else:
-		velocity = Vector2.ZERO
-
-	move_and_slide()
+func _on_attack_succeeded(target: Player) -> void:
+	target.take_damage(data.attack_damage)
 
 
 func _can_see_player() -> bool:
@@ -63,5 +45,34 @@ func _can_see_player() -> bool:
 	return result.is_empty() or result.collider == _player
 
 
+func take_damage(amount: int) -> void:
+	_health_comp.decrease_health(amount)
+
+
 func _on_died() -> void:
 	queue_free()
+
+
+func _physics_process(delta: float) -> void:
+	if not _player:
+		return
+
+	var can_see_player: bool = _can_see_player()
+	_ai.tick(delta, global_position, _player.global_position, can_see_player)
+
+	if _ai.wants_attack:
+		_on_attack_succeeded(_player)
+
+	if _ai._state != _ai.State.IDLE:
+		_nav_agent.target_position = _player.global_position
+	else:
+		_nav_agent.target_position = global_position
+
+	var next_pos: Vector2 = _nav_agent.get_next_path_position()
+
+	if _ai.desired_direction != Vector2.ZERO:
+		velocity = (next_pos - global_position).normalized() * data.move_speed
+	else:
+		velocity = Vector2.ZERO
+
+	move_and_slide()
