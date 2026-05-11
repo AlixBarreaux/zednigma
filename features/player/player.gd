@@ -25,8 +25,7 @@ func take_damage(amount: int) -> void:
 
 func _on_died() -> void:
 	# TODO: trigger death state, restart level
-	# TODO: Multiplayer: Replace 0 by peer id.
-	Events.player_died.emit(0)
+	Events.player_died.emit(get_multiplayer_authority())
 	queue_free()
 
 
