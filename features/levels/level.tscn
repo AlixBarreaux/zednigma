@@ -894,10 +894,13 @@ tile_map_data = PackedByteArray("AAAUAP//AAABAAUAAAAFAP//AAAAAAUAAAAFAP3/AAACAAU
 tile_set = SubResource("TileSet_rhgqm")
 metadata/_edit_lock_ = true
 
+[node name="Zombies" type="Node2D" parent="." unique_id=595345411]
+unique_name_in_owner = true
+
+[node name="Zombie" parent="Zombies" unique_id=326393747 instance=ExtResource("2_fysxg")]
+unique_name_in_owner = true
+position = Vector2(286, -288)
+
 [node name="Player" parent="." unique_id=1108645041 instance=ExtResource("1_ctm8j")]
 unique_name_in_owner = true
 position = Vector2(-131, -298)
-
-[node name="Zombie" parent="." unique_id=326393747 instance=ExtResource("2_fysxg")]
-unique_name_in_owner = true
-position = Vector2(286, -288)
