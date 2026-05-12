@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_s606v")
 max_health = 1
+detection_range = 350.0
 metadata/_custom_type_script = "uid://o2noj41egasn"
