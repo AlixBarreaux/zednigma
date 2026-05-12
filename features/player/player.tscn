@@ -3,17 +3,22 @@
 [ext_resource type="Script" uid="uid://blnlk6v34mvrw" path="res://features/player/player.gd" id="1_4flbx"]
 [ext_resource type="Resource" uid="uid://bancj5myy4rdd" path="res://data/player/player_default.tres" id="2_emvbc"]
 [ext_resource type="Script" uid="uid://bqc4wh7ihoyov" path="res://systems/health/health_component.gd" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://f3ieaap3111m" path="res://assets/graphics/character_player.tres" id="3_i250s"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sh265"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_i250s"]
+radius = 21.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1108645041]
+collision_mask = 6
 script = ExtResource("1_4flbx")
 data = ExtResource("2_emvbc")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=326113587]
+texture = ExtResource("3_i250s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1317364028]
-shape = SubResource("CircleShape2D_sh265")
+shape = SubResource("CircleShape2D_i250s")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=250082993]
 
