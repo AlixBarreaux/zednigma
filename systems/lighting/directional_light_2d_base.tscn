@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://inevjc1vbl3k"]
+
+[ext_resource type="Script" uid="uid://c56cqyu14jo62" path="res://systems/lighting/directional_light_2d_base.gd" id="1_88gng"]
+
+[node name="DirectionalLight2DBase" type="DirectionalLight2D" unique_id=194775473]
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 1.5
+shadow_item_cull_mask = 0
+script = ExtResource("1_88gng")
