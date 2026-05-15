@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dyyckrefkoyih"]
+
+[ext_resource type="Texture2D" uid="uid://dnbm6h1ipj0vn" path="res://assets/graphics/light_texture.png" id="1_ngnmi"]
+[ext_resource type="Script" uid="uid://d4cp2ih6q5kwt" path="res://systems/lighting/point_light_2d_base.gd" id="1_px7fx"]
+[ext_resource type="Resource" uid="uid://csqjxjxon138p" path="res://data/lighting/lighting_default.tres" id="3_ngnmi"]
+
+[node name="PointLight2DBase" type="PointLight2D" unique_id=762557371]
+color = Color(0.6236479, 0.0003042826, 0.6283564, 1)
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 1.5
+shadow_item_cull_mask = 0
+texture = ExtResource("1_ngnmi")
+script = ExtResource("1_px7fx")
+config = ExtResource("3_ngnmi")

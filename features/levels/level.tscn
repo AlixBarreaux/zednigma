@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bdvosli755f2i" path="res://features/enemies/zombie.tscn" id="2_fysxg"]
 [ext_resource type="Script" uid="uid://be2ue1davm513" path="res://systems/tile-map/tile_map_layers.gd" id="2_rhgqm"]
 [ext_resource type="Texture2D" uid="uid://d3ekx6a4b8rac" path="res://assets/graphics/terrain_spritesheet.png" id="4_2teef"]
+[ext_resource type="PackedScene" uid="uid://inevjc1vbl3k" path="res://systems/lighting/directional_light_2d_base.tscn" id="7_5876d"]
+[ext_resource type="PackedScene" uid="uid://dyyckrefkoyih" path="res://systems/lighting/point_light_2d_base.tscn" id="7_bpgwq"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_2teef"]
 tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 131072, 0, 0, 1, 0, 0, 65537, 327680, 0, 131073, 0, 0, 2, 0, 0, 65538, 327680, 0, 131074, 0, 0, 3, 0, 0, 65539, 0, 0, 131075, 0, 0)
@@ -456,6 +458,12 @@ pattern_0 = SubResource("TileMapPattern_2teef")
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rhgqm"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_efl23"]
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bpgwq"]
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2teef"]
 texture = ExtResource("4_2teef")
 texture_region_size = Vector2i(64, 64)
@@ -546,6 +554,7 @@ texture_region_size = Vector2i(64, 64)
 1:4/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_rhgqm")
 1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 2:4/0 = 0
+2:4/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_efl23")
 2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 3:4/0 = 0
 4:4/0 = 0
@@ -572,6 +581,7 @@ texture_region_size = Vector2i(64, 64)
 1:5/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_rhgqm")
 1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 2:5/0 = 0
+2:5/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_bpgwq")
 2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 3:5/0 = 0
 4:5/0 = 0
@@ -899,8 +909,17 @@ unique_name_in_owner = true
 
 [node name="Zombie" parent="Zombies" unique_id=326393747 instance=ExtResource("2_fysxg")]
 unique_name_in_owner = true
-position = Vector2(286, -288)
+position = Vector2(1102, -293)
 
 [node name="Player" parent="." unique_id=1108645041 instance=ExtResource("1_ctm8j")]
 unique_name_in_owner = true
-position = Vector2(-131, -298)
+position = Vector2(425, -296)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1218627762]
+color = Color(0, 0, 0, 1)
+
+[node name="DirectionalLight2DBase" parent="." unique_id=194775473 instance=ExtResource("7_5876d")]
+
+[node name="PointLight2dBase" parent="." unique_id=762557371 instance=ExtResource("7_bpgwq")]
+position = Vector2(751, -261)
+color = Color(0.13333334, 1, 1, 1)
